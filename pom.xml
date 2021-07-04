@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<gwtVersion>2.8.0</gwtVersion>
+		<gwtVersion>2.8.2</gwtVersion>
 		<serverPort>8080</serverPort>
 	</properties>
 
@@ -71,7 +71,6 @@
 	</build>
 
 	<profiles>
-
 		<profile>
 			<id>gwt-dev</id>
 			<build>
@@ -84,14 +83,23 @@
 					<plugin>
 						<groupId>net.ltgt.gwt.maven</groupId>
 						<artifactId>gwt-maven-plugin</artifactId>
-						<version>1.0-rc-6</version>
+						<version>1.0.0</version>
 						<extensions>true</extensions>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>generate-module</goal>
+								</goals>
+							</execution>
+						</executions>
 						<configuration>
 							<moduleName>com.gwidgets.module1</moduleName>
 							<moduleShortName>module1</moduleShortName>
 							<startupUrls>
 								<startupUrl>index.html</startupUrl>
 							</startupUrls>
+							<modules>com.gwidgets.module1</modules>
 							<devmodeArgs>
 								<devmodeArg>-noserver</devmodeArg>
 								<devmodeArg>-port</devmodeArg>
@@ -139,7 +147,7 @@
 					<plugin>
 						<groupId>net.ltgt.gwt.maven</groupId>
 						<artifactId>gwt-maven-plugin</artifactId>
-						<version>1.0-rc-6</version>
+						<version>1.0.0</version>
 						<extensions>true</extensions>
 						<executions>
 							<execution>
@@ -157,9 +165,8 @@
 								<startupUrl>index.html</startupUrl>
 							</startupUrls>
 							<classpathScope>compile</classpathScope>
-							<webappDirectory>${basedir}/src/main/resources/static</webappDirectory>
-							<workDir>${basedir}/src/main/resources/static</workDir>
-							<warDir>${basedir}/src/main/resources/static</warDir>
+							<webappDirectory>${project.build.directory}/classes/static</webappDirectory>
+							<warDir>${project.build.directory}/classes/static</warDir>
 						</configuration>
 					</plugin>
 				</plugins>

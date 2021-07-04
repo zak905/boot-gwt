@@ -8,7 +8,7 @@ public class AppEntryPoint implements EntryPoint {
 	
 	
 	public void onModuleLoad() {
-		RootPanel.get().add(new Label("zakaria"));
+		RootPanel.get().add(new Label("Welcome to Gwt with Spring demo"));
 		
 	}
 
